@@ -46,4 +46,3 @@ const AnimatedTitle = ({title, containerClass }) => {
 
 export default AnimatedTitle
 
-// 1:18
