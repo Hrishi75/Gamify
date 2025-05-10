@@ -34,10 +34,10 @@ const Hero = () => {
     if(loadedVideos === totalVideos - 1) {
         setIsloading(false);
     }
-  }), ([loadedVideos])
+  }, [loadedVideos])
 
   useGSAP(() => {
-    if(hasClicked) {
+    if(!hasClicked || !nextVideoRef.current) return; 
         gsap.set('#next-video', {visibility: 'visible'});
 
         gsap.to('#next-video', {
@@ -56,8 +56,8 @@ const Hero = () => {
             duration: '1.5',
             ease: 'power1.inOut',
         })
-    }
-  }, {dependencies: [currentIndex], revertOnUpdate: true})
+    
+  }, {dependencies: [hasClicked], revertOnUpdate: true})
 
   useGSAP(() => {
     gsap.set('#video-frame', {
